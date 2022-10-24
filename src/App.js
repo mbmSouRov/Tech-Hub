@@ -1,9 +1,10 @@
 import "./App.css";
+import Route from "./Routes/Route/Route";
 
 function App() {
   return (
     <div className="App">
-      <p className="text-orange-500">This is main page</p>
+      <Route></Route>
     </div>
   );
 }
