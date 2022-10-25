@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useReducer, useRef } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import Pdf from "react-to-pdf";
 
 const CourseInfo = () => {
   const info = useLoaderData();
   const datas = info[0];
-
+  const ref = React.createRef();
   const id = datas.id;
   const name = datas.company.name;
   const feature = datas.feature;
   const picture = datas.photoURL;
   const price = datas.price;
   const learnMore = datas.website;
+
+  const exampleRef = useRef();
+
   console.log(datas);
   return (
     <div>
@@ -24,9 +28,20 @@ const CourseInfo = () => {
           <div>
             <div className="flex justify-center items-center">
               <h1 className="text-5xl font-bold text-left">{name}</h1>
-              <button className="btn btn-primary">FREE DOWNLOAD</button>
+
+              <Pdf targetRef={exampleRef} filename={"mew.pdf"}>
+                {({ toPdf }) => (
+                  <button className="btn btn-primary" onClick={toPdf}>
+                    FREE DOWNLOAD
+                  </button>
+                )}
+              </Pdf>
+
+              <div ref={exampleRef}>
+                <p>ggwep</p>
+              </div>
             </div>
-            <p className="py-6  text-left">{feature}</p>
+            <h1 className="py-6  text-left">{feature}</h1>
             <div className="flex justify-between items-center">
               <div className="rating">
                 <input
