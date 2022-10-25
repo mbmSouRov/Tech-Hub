@@ -1,25 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ContentDetails = ({ data }) => {
-  const info = data.company.meaning;
+  const { id } = data;
+  console.log(id);
+  const info = data.company.name;
   const feature = data.feature;
+  const imgage = data.photoURL;
+  console.log(imgage);
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
-          <img
-            src="https://placeimg.com/400/225/arch"
-            alt="Shoes"
-            className="rounded-xl"
-          />
-        </figure>
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">
-            {info} <button className="btn btn-primary">Download PDF</button>
-          </h2>
-          <p>{feature}</p>
+      <Link to={`/courseInfo/${id}`}>
+        <div className="card w-80 h-84 bg-base-100 shadow-xl">
+          <figure className="px-6 pt-6">
+            <img src={imgage} alt="course-img" className="rounded-xl h-40" />
+          </figure>
+          <div className="card-body items-center text-center">
+            <h2 className="card-title">{info}</h2>
+            <p>
+              {feature.slice(0, 100) + "......"}
+              <span className="p-0.5 hover:bg-rose-800 hover:text-white rounded-md cursor-pointer">
+                Read More
+              </span>
+            </p>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

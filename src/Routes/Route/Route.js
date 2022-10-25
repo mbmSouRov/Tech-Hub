@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://vercel-webtech-deploy.vercel.app/tech-categories/${params.id}`
+            `https://vercel-webtech-deploy.vercel.app/tech-categories/courseInfo/${params.id}`
           ),
       },
     ],

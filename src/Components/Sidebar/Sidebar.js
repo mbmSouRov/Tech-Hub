@@ -5,7 +5,7 @@ const Sidebar = ({ data }) => {
   const { name, id } = data;
   return (
     <div>
-      <p>
+      <p className="btn btn-outline btn-primary my-2">
         <Link to={`/courseInfo/${id}`}>{name}</Link>
       </p>
     </div>

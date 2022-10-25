@@ -105,6 +105,7 @@ const Header = () => {
               <button className="btn btn-ghost normal-case text-xl">
                 <img
                   className="h-6 w-6 rounded-md"
+                  alt="user"
                   src={user.photoURL}
                   onMouseEnter={showName}
                 ></img>

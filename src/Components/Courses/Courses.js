@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ContentDetails from "../ContentDetails/ContentDetails";
 import Sidebar from "../Sidebar/Sidebar";
+import { GiBoomerangSun } from "react-icons/gi";
 
 const Courses = () => {
   const [categories, setCategories] = useState([]);
@@ -14,6 +15,10 @@ const Courses = () => {
   return (
     <div className="flex justify-around mt-8">
       <div className="p-5">
+        <p className="text-2xl flex items-center text-rose-600 font-bold ">
+          <GiBoomerangSun />
+          Course Overview
+        </p>
         {categories.map((catagory) => (
           <Sidebar key={catagory.id} data={catagory}></Sidebar>
         ))}
