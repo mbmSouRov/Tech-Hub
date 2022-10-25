@@ -5,7 +5,6 @@ import { AuthContext } from "../../Context/UserContext";
 const Signup = () => {
   const { userSignUp, updateUserProfile } = useContext(AuthContext);
 
-  console.log(userSignUp);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,7 +12,7 @@ const Signup = () => {
     const profilePic = form.photourl.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log("All Informations:", name, profilePic, email, password);
+    // console.log("All Informations:", name, profilePic, email, password);
     userSignUp(email, password)
       .then((result) => {
         console.log(result.user);
