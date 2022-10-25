@@ -15,7 +15,7 @@ const Header = () => {
         console.log("Signing Out Failed", error.message);
       });
   };
-  console.log(user);
+  // console.log(user);
   const showName = () => {
     return user.displayName;
   };

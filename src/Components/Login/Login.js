@@ -31,7 +31,7 @@ const Login = () => {
     userLogInWithGoogle()
       .then((userInfo) => {
         console.log(userInfo.user);
-        navigate(from, { replace: true });
+        navigate("/home");
       })
       .catch((error) => {
         console.log(error.message);
