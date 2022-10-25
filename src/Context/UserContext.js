@@ -1,8 +1,9 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -22,12 +23,16 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const UserContext = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   //----------------   SIGNUP  ----------------
   const userSignUp = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   //----------------   LOGIN  ----------------
   const userLogIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   //----------------   LOGOUT  ----------------
@@ -43,12 +48,22 @@ const UserContext = ({ children }) => {
     return updateProfile(auth.currentUser, profile);
   };
 
+  //----------------   ON AUTH CHANGE  ----------------
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unSubscribe();
+  }, []);
   const authInfo = {
+    user,
     userLogIn,
     userSignUp,
     userSignOut,
     userLogInWithGoogle,
     updateUserProfile,
+    loading,
   };
   return (
     <div>

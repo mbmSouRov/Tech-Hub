@@ -2,8 +2,9 @@ import React from "react";
 
 const Courses = () => {
   return (
-    <div>
-      <p>This is courses Part</p>
+    <div className="flex">
+      <div>first column</div>
+      <div>second column</div>
     </div>
   );
 };

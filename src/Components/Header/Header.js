@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaCloudsmith } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/UserContext";
+import { FaUser } from "react-icons/fa";
+
 const Header = () => {
+  const { user, userSignOut } = useContext(AuthContext);
+  const handleSignOut = () => {
+    userSignOut()
+      .then((result) => {
+        console.log("Signing Out");
+      })
+      .catch((error) => {
+        console.log("Signing Out Failed", error.message);
+      });
+  };
+  // console.log(user.photoURL);
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -62,12 +76,29 @@ const Header = () => {
             </li>
           </ul>
           <div>
-            <button className="btn btn-ghost normal-case text-xl">
-              <Link to={"/login"}>LOGIN</Link>{" "}
-            </button>
-            <button className="btn btn-ghost normal-case text-xl">
-              <Link to={"/signup"}>SIGNUP</Link>{" "}
-            </button>
+            {user ? (
+              <button className="btn btn-ghost normal-case text-xl">
+                <img
+                  className="h-6 w-6 rounded-lg items-center justify-center align-middle"
+                  src={user.photoURL}
+                ></img>
+                {/* <FaUser></FaUser> */}
+              </button>
+            ) : (
+              <button className="btn btn-ghost normal-case text-xl">
+                <Link to={"/login"}>LOGIN</Link>
+              </button>
+            )}
+
+            {user ? (
+              <button className="btn btn-ghost normal-case text-xl">
+                <Link onClick={handleSignOut}>SIGNOUT</Link>
+              </button>
+            ) : (
+              <button className="btn btn-ghost normal-case text-xl">
+                <Link to={"/signup"}>SIGNUP</Link>
+              </button>
+            )}
           </div>
         </div>
       </div>
