@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const { userSignUp, updateUserProfile } = useContext(AuthContext);
-
+  const toastSignUp = () => toast.success("New User Created!");
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -16,6 +18,7 @@ const Signup = () => {
     userSignUp(email, password)
       .then((result) => {
         console.log(result.user);
+        // navigate("/home");
         form.reset();
         handleUpdateProfile(name, profilePic);
       })
@@ -30,7 +33,10 @@ const Signup = () => {
       photoURL: profilePic,
     };
     updateUserProfile(profile)
-      .then((result) => console.log("Registration Completed"))
+      .then((result) => {
+        console.log("Registration Completed");
+        toastSignUp();
+      })
       .catch((error) => {
         console.log("Somthing Wrong With Registration", error.message);
       });
@@ -97,6 +103,7 @@ const Signup = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Signup</button>
               </div>
+              <Toaster />
             </form>
           </div>
           <div className="text-center lg:text-left">

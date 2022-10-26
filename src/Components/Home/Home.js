@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 const Home = () => {
   return (
     <div>
@@ -17,7 +19,9 @@ const Home = () => {
               <br />
               Making Web Technology easier for everyone.
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn btn-primary">
+              <Link to={"/courses"}>Get Started</Link>
+            </button>
           </div>
         </div>
       </div>

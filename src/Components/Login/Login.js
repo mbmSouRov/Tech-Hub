@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../Context/UserContext";
+import toast, { Toaster } from "react-hot-toast";
+
 const Login = () => {
+  const notify = () => toast.error("Login Failed");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  const [error, setError] = useState("");
   const { userLogIn, userLogInWithGoogle } = useContext(AuthContext);
 
   const handleOnSubmit = (event) => {
@@ -23,6 +27,8 @@ const Login = () => {
       })
       .catch((error) => {
         console.log("Something Wrong With Login", error.message);
+        notify();
+        setError(error.message);
       });
   };
 
@@ -89,9 +95,17 @@ const Login = () => {
                   </p>
                 </label>
               </div>
+              {error ? (
+                <div>
+                  <p className="text-red-600 font-semibold">{error}</p>
+                </div>
+              ) : (
+                ""
+              )}
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
+              <Toaster />
             </form>
             <div className="mb-4">
               <button
