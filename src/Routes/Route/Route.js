@@ -4,6 +4,7 @@ import Blog from "../../Components/Blog/Blog";
 import Checkout from "../../Components/Checkout/Checkout";
 import CourseInfo from "../../Components/CourseInfo/CourseInfo";
 import Courses from "../../Components/Courses/Courses";
+import Error404page from "../../Components/Error404page/Error404page";
 import Home from "../../Components/Home/Home";
 import Login from "../../Components/Login/Login";
 import Signup from "../../Components/Signup/Signup";
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
         element: <Blog></Blog>,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Error404page></Error404page>,
   },
 ]);
 const Route = () => {
