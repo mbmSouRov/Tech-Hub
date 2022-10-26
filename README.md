@@ -1,3 +1,30 @@
+# Tech-Hub
+
+
+## Live Website: ()
+
+
+## Features
+* In this project the key feature is React Router and Firebase Authentication.
+
+* User can sign in, sign out. User can also login through gmail and github.
+
+* React toast will pop up for wrong email and password match.
+
+* User can see the free courses only by loging in. Thus courses and some extra pages are private
+
+* This website is fully responsive
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
