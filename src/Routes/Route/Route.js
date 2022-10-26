@@ -1,5 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Checkout from "../../Components/Checkout/Checkout";
 import CourseInfo from "../../Components/CourseInfo/CourseInfo";
 import Courses from "../../Components/Courses/Courses";
 import Home from "../../Components/Home/Home";
@@ -42,6 +43,18 @@ const router = createBrowserRouter([
         element: (
           <Privateroute>
             <CourseInfo></CourseInfo>
+          </Privateroute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://vercel-webtech-deploy.vercel.app/tech-categories/courseInfo/${params.id}`
+          ),
+      },
+      {
+        path: "/checkout/id/:id",
+        element: (
+          <Privateroute>
+            <Checkout></Checkout>
           </Privateroute>
         ),
         loader: ({ params }) =>

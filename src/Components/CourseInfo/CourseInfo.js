@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from "react";
+import React, { useRef } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Pdf from "react-to-pdf";
 
@@ -36,12 +36,10 @@ const CourseInfo = () => {
                   </button>
                 )}
               </Pdf>
-
-              <div ref={exampleRef}>
-                <p>ggwep</p>
-              </div>
             </div>
-            <h1 className="py-6  text-left">{feature}</h1>
+            <h1 ref={exampleRef} className="py-6  text-left">
+              {feature}
+            </h1>
             <div className="flex justify-between items-center">
               <div className="rating">
                 <input
@@ -88,6 +86,11 @@ const CourseInfo = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="mt-96">
+          <button className="btn btn-outline btn-primary">
+            <Link to={`/checkout/id/${id}`}>GET PREMIUM ACCESSS</Link>
+          </button>
         </div>
       </div>
     </div>
