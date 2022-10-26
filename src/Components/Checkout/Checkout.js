@@ -10,10 +10,9 @@ const Checkout = () => {
   const phone = data.phone;
   const picture = data.photoURL;
   const price = data.price;
-  const learnMore = data.website;
   return (
     <div>
-      <div className="mx-auto mt-20 card w-96 bg-base-100 shadow-xl image-full">
+      <div className="mx-auto mt-20 card lg:w-96 w-72 bg-base-100 shadow-xl image-full">
         <figure>
           <img src={picture} alt="Shoes" />
         </figure>

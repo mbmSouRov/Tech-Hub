@@ -9,7 +9,7 @@ const Privateroute = ({ children }) => {
   if (loading) {
     return (
       <div>
-        <p>Loading</p>
+        <p className="mt-10 text-3xl text-rose-600 font-thin">Loading</p>
       </div>
     );
   }

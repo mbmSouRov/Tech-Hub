@@ -13,7 +13,7 @@ const Courses = () => {
   }, []);
 
   return (
-    <div className="flex justify-around mt-8">
+    <div className="lg:flex lg:justify-around mt-8">
       <div className="p-5">
         <p className="text-2xl flex items-center text-rose-600 font-bold ">
           <GiBoomerangSun />
@@ -23,7 +23,7 @@ const Courses = () => {
           <Sidebar key={catagory.id} data={catagory}></Sidebar>
         ))}
       </div>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="lg:grid grid-cols-2 lg:gap-2 flex-col">
         {categories.map((category) => (
           <ContentDetails key={category.id} data={category}></ContentDetails>
         ))}

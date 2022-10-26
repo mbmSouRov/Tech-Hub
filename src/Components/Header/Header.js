@@ -36,8 +36,8 @@ const Header = () => {
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           {/* RESPONSIVE BAR OPTION */}
-          {/* <div className="dropdown lg:hidden">
-            <label tabIndex={0} className="btn btn-ghost hidden">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -55,19 +55,53 @@ const Header = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 hidden"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 lg:hidden"
             >
               <li>
-                <p>Item 1</p>
+                <p className="font-light">
+                  <Link to={"/courses"}>COURSES</Link>
+                </p>
               </li>
               <li>
-                <p>Item 2</p>
+                <p className="font-light">FAQ</p>
               </li>
               <li>
-                <p>Item 3</p>
+                <p className="font-light">
+                  <Link to={"/blog"}>BLOG</Link>
+                </p>
+              </li>
+              <li>
+                <div className="lg:flex md:flex-col flex-col">
+                  {user ? (
+                    <button
+                      className="btn btn-ghost normal-case text-xl"
+                      title={user.displayName}
+                    >
+                      <div className="avatar">
+                        <div className="w-7 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                          <img src={user.photoURL} alt="user" />
+                        </div>
+                      </div>
+                    </button>
+                  ) : (
+                    <button className="btn btn-ghost normal-case text-xl">
+                      <Link to={"/login"}>LOGIN</Link>
+                    </button>
+                  )}
+
+                  {user ? (
+                    <button className="btn btn-ghost normal-case text-xl">
+                      <Link onClick={handleSignOut}>SIGNOUT</Link>
+                    </button>
+                  ) : (
+                    <button className="btn btn-ghost normal-case text-xl">
+                      <Link to={"/signup"}>SIGNUP</Link>
+                    </button>
+                  )}
+                </div>
               </li>
             </ul>
-          </div> */}
+          </div>
           <p className="btn btn-ghost normal-case text-2xl justify-start">
             <Link className="flex items-center" to={"/"}>
               <FaCloudsmith />
@@ -75,7 +109,7 @@ const Header = () => {
             </Link>
           </p>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden lg:flex items-center">
           <ul className="menu menu-horizontal p-0">
             <li>
               <p className="font-light">
@@ -123,11 +157,11 @@ const Header = () => {
                 className="btn btn-ghost normal-case text-xl"
                 title={user.displayName}
               >
-                <img
-                  className="h-6 w-6 rounded-md"
-                  alt="user"
-                  src={user.photoURL}
-                ></img>
+                <div className="avatar">
+                  <div className="w-7 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <img src={user.photoURL} alt="user" />
+                  </div>
+                </div>
               </button>
             ) : (
               <button className="btn btn-ghost normal-case text-xl">

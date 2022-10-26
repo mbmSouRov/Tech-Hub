@@ -5,7 +5,6 @@ import Pdf from "react-to-pdf";
 const CourseInfo = () => {
   const info = useLoaderData();
   const datas = info[0];
-  const ref = React.createRef();
   const id = datas.id;
   const name = datas.company.name;
   const feature = datas.feature;
@@ -18,29 +17,37 @@ const CourseInfo = () => {
   console.log(datas);
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
+      <div className="hero bg-base-200 lg:flex flex-col">
+        <div
+          className="hero-content flex-col justify-center
+         lg:flex-row mt-12 lg:p-10 p-0"
+        >
           <img
             src={picture}
-            className="max-w-sm rounded-lg shadow-2xl"
+            className="rounded-lg shadow-2xl lg:w-max w-60"
             alt="course-img"
           />
           <div>
-            <div className="flex justify-center items-center">
-              <h1 className="text-5xl font-bold text-left">{name}</h1>
+            <div className="lg:flex justify-center items-center">
+              <h1 className="lg:text-5xl text-2xl font-bold lg:text-left text-center">
+                {name}
+              </h1>
 
               <Pdf targetRef={exampleRef} filename={"mew.pdf"}>
                 {({ toPdf }) => (
-                  <button className="btn btn-primary" onClick={toPdf}>
+                  <button
+                    className="btn btn-primary lg:mt-0 mt-6"
+                    onClick={toPdf}
+                  >
                     FREE DOWNLOAD
                   </button>
                 )}
               </Pdf>
             </div>
-            <h1 ref={exampleRef} className="py-6  text-left">
+            <h1 ref={exampleRef} className="py-6 px-2 lg:text-left text-center">
               {feature}
             </h1>
-            <div className="flex justify-between items-center">
+            <div className=" justify-between items-center">
               <div className="rating">
                 <input
                   type="radio"
@@ -75,7 +82,7 @@ const CourseInfo = () => {
                 </p>
               </div>
               <div>
-                <p>
+                <p className="p-2">
                   To learn More,
                   <span className="text-rose-900 link-hover">
                     <a target="_blank" href={learnMore} rel="noreferrer">
@@ -87,11 +94,11 @@ const CourseInfo = () => {
             </div>
           </div>
         </div>
-        <div className="mt-96">
-          <button className="btn btn-outline btn-primary">
-            <Link to={`/checkout/id/${id}`}>GET PREMIUM ACCESSS</Link>
-          </button>
-        </div>
+      </div>
+      <div className="lg:my-8 my-5">
+        <button className="btn btn-outline btn-primary">
+          <Link to={`/checkout/id/${id}`}>GET PREMIUM ACCESSS</Link>
+        </button>
       </div>
     </div>
   );

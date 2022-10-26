@@ -6,7 +6,7 @@ const Blog = () => {
       <div className="my-4">
         <div className="collapse">
           <input type="checkbox" />
-          <div className="collapse-title text-xl font-medium btn btn-outline btn-error">
+          <div className="collapse-title lg:text-xl font-medium btn btn-outline btn-error text-sm">
             what is cors?
           </div>
           <div className="collapse-content">
@@ -27,7 +27,7 @@ const Blog = () => {
       <div className="my-4">
         <div className="collapse">
           <input type="checkbox" />
-          <div className="collapse-title text-xl font-medium btn btn-outline btn-error">
+          <div className="collapse-title h-28 lg:text-xl font-medium btn btn-outline btn-error text-sm">
             Why are you using firebase? What other options do you have to
             implement authentication?
           </div>
@@ -67,7 +67,7 @@ const Blog = () => {
       <div className="my-4">
         <div className="collapse">
           <input type="checkbox" />
-          <div className="collapse-title text-xl font-medium btn btn-outline btn-error">
+          <div className="collapse-title lg:text-xl font-medium btn btn-outline btn-error text-sm">
             How does the private route work?
           </div>
           <div className="collapse-content">
@@ -88,7 +88,7 @@ const Blog = () => {
       <div className="my-4">
         <div className="collapse">
           <input type="checkbox" />
-          <div className="collapse-title text-xl font-medium btn btn-outline btn-error">
+          <div className="collapse-title lg:text-xl font-medium btn btn-outline btn-error text-sm">
             What is Node? How does Node work?
           </div>
           <div className="collapse-content">
