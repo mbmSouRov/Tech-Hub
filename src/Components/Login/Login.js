@@ -11,7 +11,8 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   const [error, setError] = useState("");
-  const { userLogIn, userLogInWithGoogle } = useContext(AuthContext);
+  const { userLogIn, userLogInWithGoogle, userLogInWithGithub } =
+    useContext(AuthContext);
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -35,6 +36,18 @@ const Login = () => {
   const handleGoogleLogIn = (event) => {
     event.preventDefault();
     userLogInWithGoogle()
+      .then((userInfo) => {
+        console.log(userInfo.user);
+        navigate("/home");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const handleGithubLogIn = (event) => {
+    event.preventDefault();
+    userLogInWithGithub()
       .then((userInfo) => {
         console.log(userInfo.user);
         navigate("/home");
@@ -115,7 +128,10 @@ const Login = () => {
                 <FaGoogle />
                 <p className="mx-2">Continue With Google</p>
               </button>
-              <button className="btn btn-outline mt-1">
+              <button
+                onClick={handleGithubLogIn}
+                className="btn btn-outline mt-1"
+              >
                 <FaGithub />
                 <p className="mx-2">Continue With Github</p>
               </button>
