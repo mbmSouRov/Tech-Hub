@@ -1,5 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Blog from "../../Components/Blog/Blog";
 import Checkout from "../../Components/Checkout/Checkout";
 import CourseInfo from "../../Components/CourseInfo/CourseInfo";
 import Courses from "../../Components/Courses/Courses";
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
           fetch(
             `https://vercel-webtech-deploy.vercel.app/tech-categories/courseInfo/${params.id}`
           ),
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
     ],
   },

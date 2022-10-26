@@ -87,7 +87,9 @@ const Header = () => {
               <p className="font-light">FAQ</p>
             </li>
             <li>
-              <p className="font-light">BLOG</p>
+              <p className="font-light">
+                <Link to={"/blog"}>BLOG</Link>
+              </p>
             </li>
           </ul>
           {/* nightMode */}
