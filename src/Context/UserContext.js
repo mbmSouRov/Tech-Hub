@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../Firebase/Firebase.config.init";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // ...........................
 // ...........................
@@ -25,6 +26,10 @@ const provider = new GoogleAuthProvider();
 const gitProvider = new GithubAuthProvider();
 
 const UserContext = ({ children }) => {
+  // const navigate = useNavigate();
+  // const location = useLocation();
+  // const from = location.state?.from?.pathname || "/";
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
